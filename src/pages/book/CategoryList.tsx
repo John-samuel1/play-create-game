@@ -4,7 +4,7 @@ import { SEO } from "@/components/SEO";
 
 const categories = [
   { key: "bank", title: "بنك", href: "/book/bank", active: true },
-  { key: "risk", title: "ريسك", href: "#", active: false },
+  { key: "risk", title: "ريسك", href: "/book/risk", active: true },
   { key: "top10", title: "توب 10", href: "#", active: false },
   { key: "truefalse", title: "اهبد صح", href: "#", active: false },
   { key: "acting", title: "تمثيل", href: "#", active: false },
