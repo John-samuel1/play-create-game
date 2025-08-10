@@ -11,8 +11,6 @@ import BankGame from "./pages/book/BankGame";
 import RiskRules from "./pages/book/RiskRules";
 import RiskGame from "./pages/book/RiskGame";
 import OneByThreeSetup from "./pages/one-by-three/Setup";
-import Top10Rules from "./pages/book/Top10Rules";
-import Top10Game from "./pages/book/Top10Game";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,8 +26,6 @@ const App = () => (
           <Route path="/book/bank/play" element={<BankGame />} />
           <Route path="/book/risk" element={<RiskRules />} />
           <Route path="/book/risk/play" element={<RiskGame />} />
-          <Route path="/book/top10" element={<Top10Rules />} />
-          <Route path="/book/top10/play" element={<Top10Game />} />
           <Route path="/one-by-three" element={<OneByThreeSetup />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
