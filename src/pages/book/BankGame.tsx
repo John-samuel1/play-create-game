@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 
 const QUESTIONS: { q: string; a: string }[] = [
@@ -40,6 +41,7 @@ const BankGame = () => {
   const [scores, setScores] = useState({ team1: 0, team2: 0 });
   const [pot, setPot] = useState(0); // غير مخزن
   const [power, setPower] = useState(1); // 1 ثم 2 ثم 4...
+  const [round, setRound] = useState<number>(1);
 
   const question = useMemo(() => QUESTIONS[current], [current]);
 
@@ -113,7 +115,7 @@ const BankGame = () => {
 
       <header className="mb-4 text-center space-y-1">
         <h1 className="text-2xl md:text-3xl font-extrabold">بنك</h1>
-        <p className="text-muted-foreground">الجولة الأولى</p>
+        <p className="text-muted-foreground">الجولة {round}</p>
       </header>
 
       <div className="grid md:grid-cols-3 gap-4">
@@ -137,9 +139,24 @@ const BankGame = () => {
 
         <Card className="md:col-span-2">
           <CardHeader className="pb-2">
-            <CardTitle className="flex items-center justify-between">
+            <CardTitle className="flex items-center justify-between gap-2">
               <span>السؤال {Math.min(current + 1, QUESTIONS.length)} / {QUESTIONS.length}</span>
-              <Badge variant="secondary">الجولة 1</Badge>
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary">الجولة {round}</Badge>
+                <Select value={String(round)} onValueChange={(v) => setRound(Number(v))}>
+                  <SelectTrigger className="w-28">
+                    <SelectValue placeholder="الجولة" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">الجولة 1</SelectItem>
+                    <SelectItem value="2">الجولة 2</SelectItem>
+                    <SelectItem value="3">الجولة 3</SelectItem>
+                    <SelectItem value="4">الجولة 4</SelectItem>
+                    <SelectItem value="5">الجولة 5</SelectItem>
+                    <SelectItem value="6">الجولة 6</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
